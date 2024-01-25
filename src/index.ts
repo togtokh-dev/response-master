@@ -17,6 +17,7 @@ const JSON = (
     message,
     messageStatus = "Info",
     paginate = undefined,
+    token = undefined,
   }: {
     status?: HttpStatusType;
     success?: boolean;
@@ -24,6 +25,7 @@ const JSON = (
     message: string;
     messageStatus?: MessageStatusType;
     paginate?: PaginateType;
+    token?: string;
   }
 ) => {
   //
@@ -40,6 +42,7 @@ const JSON = (
     count: 0,
     paginate: paginate,
     data: data,
+    token: "",
   };
 
   if (Array.isArray(data)) {
@@ -47,8 +50,11 @@ const JSON = (
   } else {
     delete json.count;
   }
-  if (paginate) {
+  if (!paginate) {
     delete json.paginate;
+  }
+  if (!token) {
+    delete json.token;
   }
 
   return res.status(HttpStatusCode[status]).json(json);

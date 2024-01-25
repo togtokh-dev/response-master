@@ -10,6 +10,7 @@ export type ResponseMasterH = {
     };
     count?: number;
     paginate?: PaginateType;
+    token: string;
     data: any;
 };
 export interface ResponseMaster extends AxiosResponse {
