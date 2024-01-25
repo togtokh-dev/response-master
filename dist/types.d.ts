@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 export type ResponseMasterH = {
-    status: HttpStatusType;
+    status: number;
     success: boolean;
     message: string;
     messageData: {
@@ -33,7 +33,7 @@ export declare enum MessageStatusCode {
     Info = "info"
 }
 export type HttpStatusType = "OK" | "Created" | "NoContent" | "BadRequest" | "Unauthorized" | "Forbidden" | "NotFound" | "InternalServerError";
-export type MessageStatusType = "Success" | "Danger" | "Warning" | "Info";
+export type MessageStatusType = "success" | "danger" | "warning" | "info";
 export type PaginateType = {
     total: number;
     pageCount: number;

@@ -15,7 +15,7 @@ const JSON = (
     success = true,
     data,
     message,
-    messageStatus = "Info",
+    messageStatus = "info",
     paginate = undefined,
     token = undefined,
   }: {
@@ -31,13 +31,13 @@ const JSON = (
   //
 
   const json: ResponseMasterH = {
-    status: status,
+    status: HttpStatusCode[status],
     success: success,
     message: message,
     messageData: {
       message: message,
       messageStatus: messageStatus,
-      messageCode: "123",
+      messageCode: "_________",
     },
     count: 0,
     paginate: paginate,

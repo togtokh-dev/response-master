@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpStatusCode = void 0;
 const types_1 = require("./types");
-const JSON = (res, { status = "OK", success = true, data, message, messageStatus = "Info", paginate = undefined, token = undefined, }) => {
+const JSON = (res, { status = "OK", success = true, data, message, messageStatus = "info", paginate = undefined, token = undefined, }) => {
     //
     const json = {
-        status: status,
+        status: types_1.HttpStatusCode[status],
         success: success,
         message: message,
         messageData: {
             message: message,
             messageStatus: messageStatus,
-            messageCode: "123",
+            messageCode: "_________",
         },
         count: 0,
         paginate: paginate,
