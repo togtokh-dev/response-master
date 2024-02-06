@@ -42,7 +42,7 @@ const JSON = (
     count: 0,
     paginate: paginate,
     data: data,
-    token: "",
+    token: token,
   };
 
   if (Array.isArray(data)) {

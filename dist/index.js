@@ -16,7 +16,7 @@ const JSON = (res, { status = "OK", success = true, data, message, messageStatus
         count: 0,
         paginate: paginate,
         data: data,
-        token: "",
+        token: token,
     };
     if (Array.isArray(data)) {
         json.count = data.length;
