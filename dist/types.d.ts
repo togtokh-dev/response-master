@@ -3,14 +3,10 @@ export type ResponseMasterH = {
     status: number;
     success: boolean;
     message: string;
-    messageData: {
-        message: string;
-        messageStatus: MessageStatusType;
-        messageCode: string;
-    };
     count?: number;
     paginate?: PaginateType;
     token: string;
+    code: string;
     data: any;
 };
 export interface ResponseMaster extends AxiosResponse {

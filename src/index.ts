@@ -8,22 +8,45 @@ import {
   ResponseMasterH,
 } from "./types";
 
+export interface ApiResponse<T> {
+  success: boolean; // Indicates success or failure
+  message: string; // A user-friendly message
+  token?: string;
+  code: string;
+  paginate?: {
+    total: number;
+    pageCount: number;
+    start: number;
+    end: number;
+    skip: number;
+    nextPage: number;
+    prevPage: number;
+  };
+  count?: number; // Optional count of results (e.g., for arrays)
+  data: T | null; // Data returned from the API
+}
+
+// declare module "express" {
+//   interface Response {
+//     json: <T>(body: ApiResponse<T>) => this;
+//   }
+// }
 const JSON = (
   res: Response,
   {
     status = "OK",
+    code = "",
     success = true,
     data,
     message,
-    messageStatus = "info",
     paginate = undefined,
     token = undefined,
   }: {
     status?: HttpStatusType;
     success?: boolean;
+    code?: string;
     data: any;
     message: string;
-    messageStatus?: MessageStatusType;
     paginate?: PaginateType;
     token?: string;
   }
@@ -34,11 +57,7 @@ const JSON = (
     status: HttpStatusCode[status],
     success: success,
     message: message,
-    messageData: {
-      message: message,
-      messageStatus: messageStatus,
-      messageCode: "_________",
-    },
+    code,
     count: 0,
     paginate: paginate,
     data: data,

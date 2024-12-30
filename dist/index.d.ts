@@ -1,12 +1,29 @@
 import { Response } from "express";
-import { HttpStatusType, MessageStatusType, PaginateType } from "./types";
+import { HttpStatusType, PaginateType } from "./types";
+export interface ApiResponse<T> {
+    success: boolean;
+    message: string;
+    token?: string;
+    code: string;
+    paginate?: {
+        total: number;
+        pageCount: number;
+        start: number;
+        end: number;
+        skip: number;
+        nextPage: number;
+        prevPage: number;
+    };
+    count?: number;
+    data: T | null;
+}
 declare const _default: {
-    JSON: (res: Response<any, Record<string, any>>, { status, success, data, message, messageStatus, paginate, token, }: {
+    JSON: (res: Response, { status, code, success, data, message, paginate, token, }: {
         status?: HttpStatusType;
         success?: boolean;
+        code?: string;
         data: any;
         message: string;
-        messageStatus?: MessageStatusType;
         paginate?: PaginateType;
         token?: string;
     }) => Response<any, Record<string, any>>;
